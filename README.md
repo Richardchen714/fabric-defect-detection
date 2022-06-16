@@ -32,7 +32,7 @@ python tools/train.py configs/yolox yolox_tiny_8x8_300e_coco.py
 
 After training there will be a folder named after the model in the path `mmdetection/work_dirs`. In the folder there are `log` and `JSON` recording training information like training loss after each epoch, as well as `.pth` files, neural networks after each epochs.
 
-### Plotting the loss curve
+### 绘制 loss 曲线
 
 MMDetection can plot loss curve based on `JSON` after training by running the following command.
 ```bash
@@ -64,7 +64,7 @@ The file `testToJson.py` tests the model as well as generating `JSON` file with 
       "score": 0.0135210491 } 
 ]
 ```
-
+To test the model and see he performance, run
 ```bash
 python tools/test.py \
        configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py \

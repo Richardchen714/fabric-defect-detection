@@ -1,5 +1,6 @@
 # 布匹瑕疵检测
 [TOC]
+代码 https://github.com/Richardchen714/fabric-defect-detection
 ## 安装
 由于最新版本（v2.25.0）存在bug导致安装失败，本次实验使用 v2.24.1。使用 `git clone` 命令后按照官方文档操作即可。
 
@@ -45,13 +46,15 @@ python tools/analysis_tools/analyze_logs.py plot_curve \
 
 ## 测试
 
-提交的源代码中的 `test.py` 可测试模型，并生成复合提交格式的测试结果的 `JSON` 文件。运行如下命令即可。第二个参数为模型的 Python 源代码，第三个参数为训练得到的 `.pth` 神经网络文件。
+提交的源代码中的 `test.py` 可测试模型。运行如下命令即可。第二个参数为模型的 Python 源代码，第三个参数为训练得到的 `.pth` 神经网络文件。
 
 ```bash
 python tools/test.py \
        configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py \
        work_dirs/faster_rcnn_r50_fpn_1x_coco/epoch_24.pth --eval bbox --show
 ```
+
+**源代码中 `testToJson.py` 可以测试模型并生成符合格式要求的`JSON` 文件**
 
 ## 参考内容
 https://mmdetection.readthedocs.io/en/stable/index.html
