@@ -11,7 +11,7 @@ custom_hooks = [dict(type='NumClassCheckHook')]
 
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = None
+load_from = 'checkpoints/yolox_tiny_8x8_300e_coco_20211124_171234-b4047906.pth'
 resume_from = None
 workflow = [('train', 1)]
 

@@ -21,7 +21,7 @@ When submitting jobs using "tools/train.py" or "tools/test.py", you may specify 
 - Update values of list/tuples.
 
   If the value to be updated is a list or a tuple. For example, the config file normally sets `workflow=[('train', 1)]`. If you want to
-  change this key, you may specify `--cfg-options workflow="[(train,1),(val,1)]"`. Note that the quotation mark " is necessary to
+  change this key, you may specify `--cfg-options workflow="[(train,1),(val,1)]"`. Note that the quotation mark \" is necessary to
   support list/tuple data types, and that **NO** white space is allowed inside the quotation marks in the specified value.
 
 ## Config File Structure
@@ -54,14 +54,14 @@ We follow the below style to name config files. Contributors are advised to foll
 - `{backbone}`: backbone type like `r50` (ResNet-50), `x101` (ResNeXt-101).
 - `{neck}`: neck type like `fpn`, `pafpn`, `nasfpn`, `c4`.
 - `[norm_setting]`: `bn` (Batch Normalization) is used unless specified, other norm layer type could be `gn` (Group Normalization), `syncbn` (Synchronized Batch Normalization).
-  `gn-head`/`gn-neck` indicates GN is applied in head/neck only, while `gn-all` means GN is applied in the entire model, e.g. backbone, neck, head.
+    `gn-head`/`gn-neck` indicates GN is applied in head/neck only, while `gn-all` means GN is applied in the entire model, e.g. backbone, neck, head.
 - `[misc]`: miscellaneous setting/plugins of model, e.g. `dconv`, `gcb`, `attention`, `albu`, `mstrain`.
 - `[gpu x batch_per_gpu]`: GPUs and samples per GPU, `8x2` is used by default.
 - `{schedule}`: training schedule, options are `1x`, `2x`, `20e`, etc.
-  `1x` and `2x` means 12 epochs and 24 epochs respectively.
-  `20e` is adopted in cascade models, which denotes 20 epochs.
-  For `1x`/`2x`, initial learning rate decays by a factor of 10 at the 8/16th and 11/22th epochs.
-  For `20e`, initial learning rate decays by a factor of 10 at the 16th and 19th epochs.
+    `1x` and `2x` means 12 epochs and 24 epochs respectively.
+    `20e` is adopted in cascade models, which denotes 20 epochs.
+    For `1x`/`2x`, initial learning rate decays by a factor of 10 at the 8/16th and 11/22th epochs.
+    For `20e`, initial learning rate decays by a factor of 10 at the 16th and 19th epochs.
 - `{dataset}`: dataset like `coco`, `cityscapes`, `voc_0712`, `wider_face`.
 
 ## Deprecated train_cfg/test_cfg
@@ -151,7 +151,7 @@ model = dict(
             in_channels=256,  # Input channels for bbox head. This is consistent with the out_channels in roi_extractor
             fc_out_channels=1024,  # Output feature channels of FC layers.
             roi_feat_size=7,  # Size of RoI features
-            num_classes=80,  # Number of classes for classification
+            num_classes=20,  # Number of classes for classification
             bbox_coder=dict(  # Box coder used in the second stage.
                 type='DeltaXYWHBBoxCoder',  # Type of box coder. 'DeltaXYWHBBoxCoder' is applied for most of methods.
                 target_means=[0.0, 0.0, 0.0, 0.0],  # Means used to encode and decode box
@@ -177,7 +177,7 @@ model = dict(
             num_convs=4,  # Number of convolutional layers in mask head.
             in_channels=256,  # Input channels, should be consistent with the output channels of mask roi extractor.
             conv_out_channels=256,  # Output channels of the convolutional layer.
-            num_classes=80,  # Number of class to be segmented.
+            num_classes=20,  # Number of class to be segmented.
             loss_mask=dict(  # Config of loss function for the mask branch.
                 type='CrossEntropyLoss',  # Type of loss used for segmentation
                 use_mask=True,  # Whether to only train the mask in the correct class.

@@ -1,0 +1,1 @@
+python tools/train.py configs/yolox/yolox_tiny_8x8_300e_coco.py

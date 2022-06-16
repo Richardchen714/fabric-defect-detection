@@ -16,7 +16,7 @@
 
 - 更新列表或元组的值
 
-  如果要更新的值是列表或元组。例如，配置文件通常设置 `workflow=[('train', 1)]`，如果需要改变这个键，可以通过 `--cfg-options workflow="[(train,1),(val,1)]"` 来重新设置。需要注意，引号 " 是支持列表或元组数据类型所必需的，并且在指定值的引号内**不允许**有空格。
+  如果要更新的值是列表或元组。例如，配置文件通常设置 `workflow=[('train', 1)]`，如果需要改变这个键，可以通过 `--cfg-options workflow="[(train,1),(val,1)]"` 来重新设置。需要注意，引号 \" 是支持列表或元组数据类型所必需的，并且在指定值的引号内**不允许**有空格。
 
 ## 配置文件结构
 
@@ -134,7 +134,7 @@ model = dict(
             in_channels=256,  # bbox head 的输入通道。 这与 roi_extractor 中的 out_channels 一致。
             fc_out_channels=1024,  # FC 层的输出特征通道。
             roi_feat_size=7,  # 候选区域(Region of Interest)特征的大小。
-            num_classes=80,  # 分类的类别数量。
+            num_classes=20,  # 分类的类别数量。
             bbox_coder=dict(  # 第二阶段使用的框编码器。
                 type='DeltaXYWHBBoxCoder',  # 框编码器的类别，大多数情况使用 'DeltaXYWHBBoxCoder'。
                 target_means=[0.0, 0.0, 0.0, 0.0],  # 用于编码和解码框的均值
@@ -160,7 +160,7 @@ model = dict(
             num_convs=4,  # mask head 中的卷积层数
             in_channels=256,  # 输入通道，应与 mask roi extractor 的输出通道一致。
             conv_out_channels=256,  # 卷积层的输出通道。
-            num_classes=80,  # 要分割的类别数。
+            num_classes=20,  # 要分割的类别数。
             loss_mask=dict(  # mask 分支的损失函数配置。
                 type='CrossEntropyLoss',  # 用于分割的损失类型。
                 use_mask=True,  # 是否只在正确的类中训练 mask。

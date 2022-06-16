@@ -17,7 +17,7 @@ def test_detr_head_loss():
     config = ConfigDict(
         dict(
             type='DETRHead',
-            num_classes=80,
+            num_classes=20,
             in_channels=200,
             transformer=dict(
                 type='Transformer',

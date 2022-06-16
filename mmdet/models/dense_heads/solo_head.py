@@ -135,18 +135,13 @@ class SOLOHead(BaseMaskHead):
         for i in range(len(feats)):
             if i == 0:
                 out.append(
-                    F.interpolate(
-                        feats[0],
-                        size=feats[i + 1].shape[-2:],
-                        mode='bilinear',
-                        align_corners=False))
+                    F.interpolate(feats[0], scale_factor=0.5, mode='bilinear'))
             elif i == len(feats) - 1:
                 out.append(
                     F.interpolate(
                         feats[i],
                         size=feats[i - 1].shape[-2:],
-                        mode='bilinear',
-                        align_corners=False))
+                        mode='bilinear'))
             else:
                 out.append(feats[i])
         return out

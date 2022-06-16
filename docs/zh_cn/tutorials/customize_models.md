@@ -17,7 +17,6 @@
 #### 1. 定义一个新的主干网络（以 MobileNet 为例）
 
 新建一个文件 `mmdet/models/backbones/mobilenet.py`
-
 ```python
 import torch.nn as nn
 
@@ -41,7 +40,6 @@ class MobileNet(nn.Module):
 ```python
 from .mobilenet import MobileNet
 ```
-
 或添加：
 
 ```python
@@ -259,7 +257,6 @@ class DoubleHeadRoIHead(StandardRoIHead):
 custom_imports=dict(
     imports=['mmdet.models.roi_heads.double_roi_head', 'mmdet.models.bbox_heads.double_bbox_head'])
 ```
-
 到配置文件并实现相同的目的。
 
 Double Head R-CNN 的配置文件如下：
@@ -279,7 +276,7 @@ model = dict(
             conv_out_channels=1024,
             fc_out_channels=1024,
             roi_feat_size=7,
-            num_classes=80,
+            num_classes=20,
             bbox_coder=dict(
                 type='DeltaXYWHBBoxCoder',
                 target_means=[0., 0., 0., 0.],

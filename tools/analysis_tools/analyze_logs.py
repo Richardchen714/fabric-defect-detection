@@ -54,7 +54,7 @@ def plot_curve(log_dicts, args):
         epochs = list(log_dict.keys())
         for j, metric in enumerate(metrics):
             print(f'plot curve of {args.json_logs[i]}, metric is {metric}')
-            if metric not in log_dict[epochs[int(args.eval_interval) - 1]]:
+            if metric not in log_dict[epochs[int(args.start_epoch) - 1]]:
                 if 'mAP' in metric:
                     raise KeyError(
                         f'{args.json_logs[i]} does not contain metric '
@@ -66,12 +66,14 @@ def plot_curve(log_dicts, args):
                     'interval is less than iterations of one epoch.')
 
             if 'mAP' in metric:
-                xs = []
+                xs = np.arange(
+                    int(args.start_epoch),
+                    max(epochs) + 1, int(args.eval_interval))
                 ys = []
                 for epoch in epochs:
                     ys += log_dict[epoch][metric]
-                    if 'val' in log_dict[epoch]['mode']:
-                        xs.append(epoch)
+                ax = plt.gca()
+                ax.set_xticks(xs)
                 plt.xlabel('epoch')
                 plt.plot(xs, ys, label=legend[i * num_metrics + j], marker='o')
             else:
