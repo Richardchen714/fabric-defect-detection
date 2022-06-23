@@ -1,6 +1,6 @@
 # Fabric Defect Detection
 
-This is the lab work of Computer Vision and Applications. The work is based on [MMDetection](https://github.com/open-mmlab/mmdetection)
+This is the lab work of Computer Vision and Applications. The work is based on [MMDetection](https://github.com/open-mmlab/mmdetection).
 ## Installation of MMdetection
 Version v2.25.0 of MMDetection has a bug，therefore in this work, I use v2.24.1. Just clone the repository and install it following the [docs](https://mmdetection.readthedocs.io/en/latest/get_started.html#installation).
 
